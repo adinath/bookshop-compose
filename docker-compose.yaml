@@ -1,0 +1,28 @@
+version: '2'
+services:
+  book-service:
+    image:
+      book-demo-service
+    ports:
+      - "8080:8080"
+
+  book-ui:
+    image:
+      book-ui
+    ports:
+      - "9080:3000"
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: bookuser
+      POSTGRES_PASSWORD: fizzingwhizbee
+      POSTGRES_DB: bookdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
