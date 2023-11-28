@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bookshop
+  name: bookshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookshop
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bookshop
+    spec:
+      containers:
+        - image: book-demo-service
+          name: bookshop-service
+          imagePullPolicy: IfNotPresent
+          resources: {}
+status: {}
